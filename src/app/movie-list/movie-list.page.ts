@@ -18,10 +18,6 @@ export class MovieListPage implements OnInit {
 
   ngOnInit() {
     
-  
-    // this.students = this.everythingstudentService.returnStudentsList();
-
-    // this.students = this.studentsListService.getStudents;
      this.movies = this.Mylistservice.getAllmovies();
   }
 
