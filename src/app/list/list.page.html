@@ -1,27 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      List
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
-</ion-content>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="studentslist"></ion-back-button>
+  
+      </ion-buttons>
+      <ion-title> Student</ion-title>
+      <!-- (click)="deleteStudent()" -->
+      <ion-button slot="end" (click)="deleteStudent()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+  
+  
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card>
+      <img src="http://www.auroracl.com/template/resources/images/news/quote1494914715.png" height="250px" />
+      <ion-card-header>
+        <ion-card-title>{{singleStudent?.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{singleStudent?.id}}
+  
+  
+      </ion-card-content>
+  
+  
+    </ion-card>
+  </ion-content>
