@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { mylistService } from '../mylist.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieListPage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor( private router: Router,
+    private Mylistservice: mylistService ){ 
+    
   }
 
+  movies = [];
+
+  ngOnInit() {
+    
+  
+    // this.students = this.everythingstudentService.returnStudentsList();
+
+    // this.students = this.studentsListService.getStudents;
+     this.movies = this.Mylistservice.getAllmovies();
+  }
+
+  changeUrl(user) {
+    const id = user.id;
+    const url = `movie-list/${id}`;
+
+    this.router.navigateByUrl(url);
+
+  
+  }
+
+ 
 }

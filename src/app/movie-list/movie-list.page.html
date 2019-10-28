@@ -1,19 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-button slot="start">
       <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>movie_list</ion-title>
+    </ion-button>
+    <ion-title>Movie List</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-card *ngFor="let item of students">
+  <ion-card *ngFor="let item of movies">
     <ion-item (click)="changeUrl(item)">
       <ion-card-content>
-        <ion-label>{{ item?.name }} | {{ item?.id.substring(0,4) }}
+        <ion-label>
+          {{ item?.name }} 
         </ion-label>
       </ion-card-content>
     </ion-item>
   </ion-card>
+</ion-content>
