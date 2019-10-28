@@ -12,11 +12,19 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  },
-  { path: 'movies', loadChildren: './movies/movies.module#MoviesPageModule' },
-  { path: 'movie-list', loadChildren: './movie-list/movie-list.module#MovieListPageModule' },
+  path: 'movie-list',
+  children: [
+    {
+      path: '',
+      loadChildren:
+      './movie-list/movie-list.module#MovieListPageModule'
+    },
+    {
+      path: ':id',
+      loadChildren: './movies/movies.module#MoviesPageModule'
+    }
+  ]
+}, 
   { path: 'add-movie', loadChildren: './add-movie/add-movie.module#AddMoviePageModule' }
 ];
 
