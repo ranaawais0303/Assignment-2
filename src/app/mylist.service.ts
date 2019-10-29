@@ -36,11 +36,11 @@ export class mylistService {
   }
 
   deletemovies(id:string) {
-    console.log("fuckkkkkkkkkkkkkkk: ",id)
+    console.log("kkkk: ",id)
     this.movies = this.movies.filter(e => {
       return e.id !== id;
     });
-    console.log("fuckkkkkkkkkkkkkkk: ",this.movies)
+    console.log("kk: ",this.movies)
     
   }
 }
