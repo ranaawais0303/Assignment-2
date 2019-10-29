@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { mylistService } from '../mylist.service';
 import { AlertController } from '@ionic/angular';
+import './myimg.jpg';
 
 @Component({
   selector: 'app-movies',
@@ -17,15 +18,13 @@ export class MoviesPage implements OnInit {
     private mylistService:mylistService
   ) { }
   movies = [];
-  singlemovie;
+  singlemovie: any;
 
   ngOnInit() {
     this.movies=this.mylistService.getAllmovies();
     this.route.paramMap.subscribe(paramMap=>{
       const val= paramMap.get('id');
-      this.singlemovie = this.movies.find(obj=>{
-        return obj.id.include(val);
-      });
+      this.singlemovie = this.mylistService.filterMovie(val);
     });
   }
   async deletemovies(){
@@ -33,7 +32,7 @@ export class MoviesPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Alert',
       //subHeader
-      message : 'Are you sure you want to remove ${this.singlemovie.name}?',
+      message : `Are you sure you want to remove ${this.singlemovie.name}`,
       //button :{Cancel}
       buttons:[
         {
@@ -44,8 +43,9 @@ export class MoviesPage implements OnInit {
           text:'okay',
           handler:()=>{
             console.log('confirm okay');
-            this.mylistService.deletemovies(this.singlemovie.id);
-            this.router.navigateByUrl('/home');
+            const val = this.singlemovie.id;
+            this.mylistService.deletemovies(val);
+            this.router.navigateByUrl('/movie-list');
           }
         }
       ]

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 import { AlertController } from '@ionic/angular';
-import { mylistse } from '../cars-service.service';
+import { mylistService } from '../mylist.service';
 
 
 
@@ -13,10 +13,30 @@ import { mylistse } from '../cars-service.service';
   styleUrls: ['./add-movie.page.scss'],
 })
 export class AddMoviePage implements OnInit {
+  name: any;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private mylistService: mylistService
+  ) { }
 
-  ngOnInit() {
+  movies = [];
+  id: string;
+  catagory: string;
+  release: string;
+
+  ngOnInit() { }
+
+  Addmovie() {
+    const obj = {
+      'id': "123as",
+      'name': this.name,
+      'Release': this.release,
+      'Catagory': this.catagory
+    };
+
+    this.mylistService.movies.push(obj);
+    this.router.navigateByUrl("/movie-list");
   }
-
 }

@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class mylistService {
+  AddmoviesByObj(obj: { Name: any; release: string; Catagory: string; }) {
+    throw new Error("Method not implemented.");
+  }
   movies = [
     { id: '3198', name: 'JOKER', Release:'2019',Catagory:'drama'},
     { id: '3199', name: 'DARK NIGHT',Release:'2019',Catagory:'drama' },
@@ -22,14 +25,23 @@ export class mylistService {
     return this.movies;
   }
 
+  filterMovie(item){
+    return  this.movies.find(obj=>{
+      return obj.id.includes(item);
+    });
+  }
+
   getAllmovies() {
     return this.movies;
   }
 
   deletemovies(id:string) {
+    console.log("fuckkkkkkkkkkkkkkk: ",id)
     this.movies = this.movies.filter(e => {
       return e.id !== id;
     });
+    console.log("fuckkkkkkkkkkkkkkk: ",this.movies)
+    
   }
 }
 
